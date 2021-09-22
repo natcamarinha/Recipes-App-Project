@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../components/Header';
 
 function Comidas() {
   const [meals, setMeals] = useState([]);
 
   const elementsNumber = 12;
+  
+  const pageTitle = 'Comidas';
 
   useEffect(() => {
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -13,10 +16,10 @@ function Comidas() {
 
   if (meals.length === 0) {
     return <h4>Loading...</h4>;
-  }
 
   return (
     <div>
+      <Header value={ pageTitle } />
       { meals
         .map((meal, index) => (
           <div key={ index } data-testid={ `${index}-recipe-card`}>

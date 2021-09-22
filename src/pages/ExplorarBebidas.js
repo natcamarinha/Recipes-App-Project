@@ -1,16 +1,16 @@
 import React from 'react';
 import BarraDeBusca from '../components/BarraDeBusca';
 
-class ReceitasFeitas extends React.Component {
+class ExplorarBebidas extends React.Component {
   render() {
-    const pageTitle = 'Receitas Feitas';
+    const pageTitle = 'Explorar Bebidas';
     return (
       <div>
         <BarraDeBusca value={ pageTitle } />
-        Receitas Feitas
+        Explorar Bebidas
       </div>
     );
   }
 }
 
-export default ReceitasFeitas;
+export default ExplorarBebidas;
