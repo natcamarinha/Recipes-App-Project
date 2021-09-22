@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from '../components/Header';
 
-class Bebidas extends React.Component {
+class ExplorarLocalDeOrigem extends React.Component {
   render() {
-    const pageTitle = 'Bebidas';
+    const pageTitle = 'Explorar Origem';
     return (
       <div>
         <Header value={ pageTitle } />
-        Bebidas
+        Explorar Origem
       </div>
     );
   }
 }
 
-export default Bebidas;
+export default ExplorarLocalDeOrigem;
