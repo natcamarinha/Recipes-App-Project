@@ -1,5 +1,5 @@
 import React from 'react';
-import BarraDeBusca from '../components/BarraDeBusca';
+import BarraDeBusca from '../components/Header/BarraDeBusca';
 
 class ReceitasFavoritas extends React.Component {
   render() {

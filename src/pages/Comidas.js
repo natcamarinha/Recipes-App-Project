@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 class Comidas extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class Comidas extends React.Component {
     return (
       <div>
         <Header value={ pageTitle } />
-        Comidas
+        <Footer />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
-import BarraDeBusca from '../components/BarraDeBusca';
+import BarraDeBusca from '../components/Header/BarraDeBusca';
+import Footer from '../components/Footer/Footer';
 
 class ExplorarIngredientes extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class ExplorarIngredientes extends React.Component {
     return (
       <div>
         <BarraDeBusca value={ pageTitle } />
-        Explorar Ingredientes
+        <Footer />
       </div>
     );
   }
