@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../components/Header';
 
 function Bebidas() {
   const [drinks, setDrinks] = useState([]);
 
   const elementsNumber = 12;
+
+  const pageTitle = 'Bebidas';
 
   useEffect(() => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
@@ -17,6 +20,7 @@ function Bebidas() {
 
   return (
     <div>
+      <Header value={ pageTitle } />
       { drinks
         .map((drink, index) => (
           <div key={ index } data-testid={ `${index}-recipe-card`}>
