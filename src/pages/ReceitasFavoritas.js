@@ -1,9 +1,14 @@
 import React from 'react';
+import BarraDeBusca from '../components/BarraDeBusca';
 
 class ReceitasFavoritas extends React.Component {
   render() {
+    const pageTitle = 'Receitas Favoritas';
     return (
-      <span>ReceitasFavoritas</span>
+      <div>
+        <BarraDeBusca value={ pageTitle } />
+        Receitas Favoritas
+      </div>
     );
   }
 }

@@ -1,9 +1,14 @@
 import React from 'react';
+import BarraDeBusca from '../components/BarraDeBusca';
 
 class Perfil extends React.Component {
   render() {
+    const pageTitle = 'Perfil';
     return (
-      <span>Perfil</span>
+      <div>
+        <BarraDeBusca value={ pageTitle } />
+        Perfil
+      </div>
     );
   }
 }

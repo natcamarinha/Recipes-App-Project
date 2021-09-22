@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 
-function Comidas() {
+export default function Comidas() {
   const [meals, setMeals] = useState([]);
 
   const elementsNumber = 12;
@@ -23,7 +23,7 @@ function Comidas() {
       <Header value={ pageTitle } />
       { meals
         .map((meal, index) => (
-          <div key={ index } data-testid={ `${index}-recipe-card`}>
+          <div key={ index } data-testid={ `${index}-recipe-card` }>
             <img
               src={ meal.strMealThumb }
               alt="drink"
@@ -36,5 +36,3 @@ function Comidas() {
     </div>
   );
 }
-
-export default Comidas;
