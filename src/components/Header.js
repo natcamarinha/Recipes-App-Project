@@ -11,9 +11,8 @@ function Header({ value }) {
   function ifShowInput() {
     if (showInput === false) {
       return setShowInput(true);
-    } else {
-      return setShowInput(false);
     }
+    return setShowInput(false);
   }
 
   function searchInput() {
