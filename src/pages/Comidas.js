@@ -15,22 +15,26 @@ export default function Comidas() {
   useEffect(() => {
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
       .then((res) => res.json())
-      .then((res) => setMeals(res.meals));
+      .then((data) => setMeals(data.meals));
   }, []);
 
   useEffect(() => {
     fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
       .then((res) => res.json())
-      .then((res) => setCategories(res.meals));
+      .then((data) => setCategories(data.meals));
   }, []);
 
   function handleClick(category) {
     setSelectedCategory(category);
   }
 
-  if (meals.length === 0) {
+  if (meals.length < 1) {
     return <h6>Loading...</h6>;
   }
+
+  console.log(meals);
+  console.log(categories);
+  console.log(selectedCategory);
 
   return (
     <div>
@@ -51,32 +55,37 @@ export default function Comidas() {
           )).slice(0, categoryNumber)}
       </div>
 
-      { meals
-        .filter((meal) => meal.strCategory === selectedCategory)
-        .map((mealSelected, index) => (
-          <div key={ index } data-testid={ `${index}-recipe-card` }>
-            <img
-              src={ mealSelected.strMealthumb }
-              alt="meal"
-              width="100px"
-              data-testid={ `${index}-card-img` }
-            />
-            <p data-testid={ `${index}-card-name` }>{ mealSelected.strMeal }</p>
-          </div>
-        )).slice(0, elementsNumber)}
-
-      { meals
-        .map((meal, index) => (
-          <div key={ index } data-testid={ `${index}-recipe-card` }>
-            <img
-              src={ meal.strMealThumb }
-              alt="meal"
-              width="100px"
-              data-testid={ `${index}-card-img` }
-            />
-            <p data-testid={ `${index}-card-name` }>{ meal.strMeal }</p>
-          </div>
-        )).slice(0, elementsNumber)}
+      <div>
+        { selectedCategory !== undefined ? (
+          meals
+            .filter((meal) => meal.strCategory === selectedCategory)
+            .map((mealSelected, index) => (
+              <div key={ index } data-testid={ `${index}-recipe-card` }>
+                { console.log(mealSelected) }
+                <img
+                  src={ mealSelected.strMealThumb }
+                  alt="meal"
+                  width="100px"
+                  data-testid={ `${index}-card-img` }
+                />
+                <p data-testid={ `${index}-card-name` }>{ mealSelected.strMeal }</p>
+                <p data-testid={ `${selectedCategory}-category-filter` } />
+              </div>
+            )).slice(0, elementsNumber)
+        )
+          : meals
+            .map((meal, index) => (
+              <div key={ index } data-testid={ `${index}-recipe-card` }>
+                <img
+                  src={ meal.strMealThumb }
+                  alt="meal"
+                  width="100px"
+                  data-testid={ `${index}-card-img` }
+                />
+                <p data-testid={ `${index}-card-name` }>{ meal.strMeal }</p>
+              </div>
+            )).slice(0, elementsNumber)}
+      </div>
     </div>
   );
 }

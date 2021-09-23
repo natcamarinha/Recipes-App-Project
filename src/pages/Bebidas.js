@@ -15,13 +15,13 @@ export default function Bebidas() {
   useEffect(() => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
       .then((res) => res.json())
-      .then((res) => setDrinks(res.drinks));
+      .then((data) => setDrinks(data.drinks));
   }, []);
 
   useEffect(() => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
       .then((res) => res.json())
-      .then((res) => setCategories(res.drinks));
+      .then((data) => setCategories(data.drinks));
   }, []);
 
   function handleClick(category) {
@@ -62,6 +62,7 @@ export default function Bebidas() {
               data-testid={ `${index}-card-img` }
             />
             <p data-testid={ `${index}-card-name` }>{ drinkSelected.strDrink }</p>
+            <p data-testid={ `${selectedCategory}-category-filter` } />
           </div>
         )).slice(0, elementsNumber)}
 
