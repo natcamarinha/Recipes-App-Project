@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 export default function Bebidas() {
   const [drinks, setDrinks] = useState([]);
@@ -78,6 +79,7 @@ export default function Bebidas() {
             <p data-testid={ `${index}-card-name` }>{ drink.strDrink }</p>
           </div>
         )).slice(0, elementsNumber)}
+      <Footer />
     </div>
   );
 }

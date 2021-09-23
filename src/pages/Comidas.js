@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 export default function Comidas() {
   const [meals, setMeals] = useState([]);
@@ -39,6 +40,7 @@ export default function Comidas() {
   return (
     <div>
       <Header value={ pageTitle } />
+<<<<<<< HEAD
       <div>
         <button type="button" onClick={ () => handleClick(undefined) }>All</button>
 
@@ -86,6 +88,21 @@ export default function Comidas() {
               </div>
             )).slice(0, elementsNumber)}
       </div>
+=======
+      { meals
+        .map((meal, index) => (
+          <div key={ index } data-testid={ `${index}-recipe-card` }>
+            <img
+              src={ meal.strMealThumb }
+              alt="drink"
+              width="100px"
+              data-testid={ `${index}-card-img` }
+            />
+            <p data-testid={ `${index}-card-name` }>{ meal.strMeal }</p>
+          </div>
+        )).slice(0, elementsNumber)}
+      <Footer />
+>>>>>>> da7e1b0e577e53f8cee65c865c7fb8d538451566
     </div>
   );
 }

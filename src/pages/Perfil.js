@@ -1,5 +1,6 @@
 import React from 'react';
-import BarraDeBusca from '../components/BarraDeBusca';
+import BarraDeBusca from '../components/Header/BarraDeBusca';
+import Footer from '../components/Footer/Footer';
 
 class Perfil extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class Perfil extends React.Component {
     return (
       <div>
         <BarraDeBusca value={ pageTitle } />
-        Perfil
+        <Footer />
       </div>
     );
   }

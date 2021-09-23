@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
+import DetalhesComidas from './pages/DetalhesComidas';
 import Comidas from './pages/Comidas';
 import Bebidas from './pages/Bebidas';
 import Explorar from './pages/Explorar';
@@ -15,6 +16,7 @@ import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import store from './store';
+import DetalhesBebidas from './pages/DetalhesBebidas';
 
 function App() {
   return (
@@ -23,23 +25,25 @@ function App() {
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/comidas" component={ Comidas } />
+          <Route exact path="/comidas/:id" component={ DetalhesComidas } />
           <Route exact path="/bebidas" component={ Bebidas } />
+          <Route exact path="/bebidas/:id" component={ DetalhesBebidas } />
           <Route exact path="/explorar" component={ Explorar } />
-          <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
-          <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />
+          <Route exact path="/explorar-comidas" component={ ExplorarComidas } />
+          <Route exact path="/explorar-bebidas" component={ ExplorarBebidas } />
           <Route
             exact
-            path="/explorar/comidas/ingredientes"
+            path="/explorar-comidas-ingredientes"
             component={ ExplorarIngredientes }
           />
           <Route
             exact
-            path="/explorar/bebidas/ingredientes"
+            path="/explorar-bebidas-ingredientes"
             component={ ExplorarIngredientes }
           />
           <Route
             exact
-            path="/explorar/comidas/area"
+            path="/explorar-comidas-area"
             component={ ExplorarLocalDeOrigem }
           />
           <Route exact path="/perfil" component={ Perfil } />
