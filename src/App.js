@@ -16,6 +16,7 @@ import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import DrinksProgresso from './pages/DrinksProgresso';
+import ComidasProgresso from './pages/ComidasProgresso';
 import store from './store';
 import DetalhesBebidas from './pages/DetalhesBebidas';
 
@@ -47,7 +48,16 @@ function App() {
             path="/explorar/comidas/area"
             component={ ExplorarLocalDeOrigem }
           />
-          <Route exact path="/DrinksProgresso" component={ DrinksProgresso } />
+          <Route
+            exact
+            path="/bebidas/:id/in-progress"
+            component={ DrinksProgresso }
+          />
+          <Route
+            exact
+            path="/comidas/:id/in-progress"
+            component={ ComidasProgresso }
+          />
           <Route exact path="/perfil" component={ Perfil } />
           <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
           <Route exact path="/receitas-favoritas" component={ ReceitasFavoritas } />

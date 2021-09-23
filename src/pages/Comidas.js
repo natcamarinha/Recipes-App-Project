@@ -26,7 +26,7 @@ export default function Comidas() {
           <div key={ index } data-testid={ `${index}-recipe-card` }>
             <img
               src={ meal.strMealThumb }
-              alt="drink"
+              alt="comida"
               width="100px"
               data-testid={ `${index}-card-img` }
             />
