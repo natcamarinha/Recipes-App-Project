@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
-import Bebidas from './pages/Bebidas';
+import DetalhesComidas from './pages/DetalhesComidas';
 import Comidas from './pages/Comidas';
+import Bebidas from './pages/Bebidas';
 import Explorar from './pages/Explorar';
 import ExplorarComidas from './pages/ExplorarComidas';
 import ExplorarBebidas from './pages/ExplorarBebidas';
@@ -15,6 +16,7 @@ import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import store from './store';
+import DetalhesBebidas from './pages/DetalhesBebidas';
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/comidas" component={ Comidas } />
+          <Route exact path="/comidas/:id" component={ DetalhesComidas } />
           <Route exact path="/bebidas" component={ Bebidas } />
+          <Route exact path="/bebidas/:id" component={ DetalhesBebidas } />
           <Route exact path="/explorar" component={ Explorar } />
           <Route exact path="/explorar-comidas" component={ ExplorarComidas } />
           <Route exact path="/explorar-bebidas" component={ ExplorarBebidas } />
