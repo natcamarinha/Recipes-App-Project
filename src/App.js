@@ -15,6 +15,7 @@ import ExplorarLocalDeOrigem from './pages/Explorar-C-localdeOrigem';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
+import DrinksProgresso from './pages/DrinksProgresso';
 import store from './store';
 import DetalhesBebidas from './pages/DetalhesBebidas';
 
@@ -46,6 +47,7 @@ function App() {
             path="/explorar/comidas/area"
             component={ ExplorarLocalDeOrigem }
           />
+          <Route exact path="/DrinksProgresso" component={ DrinksProgresso } />
           <Route exact path="/perfil" component={ Perfil } />
           <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
           <Route exact path="/receitas-favoritas" component={ ReceitasFavoritas } />
