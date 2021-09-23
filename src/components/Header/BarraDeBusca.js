@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import profileIcon from '../images/profileIcon.svg';
+import profileIcon from '../../images/profileIcon.svg';
 
 function Header({ value }) {
   const history = useHistory();
