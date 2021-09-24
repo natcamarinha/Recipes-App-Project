@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 function Header({ value }) {
   const history = useHistory();
   const [showInput, setShowInput] = useState(false);
+
+  useEffect(() => () => {
+    setShowInput(false);
+  }, [setShowInput]);
 
   function ifShowInput() {
     if (showInput === false) {
@@ -18,36 +23,38 @@ function Header({ value }) {
   function searchInput() {
     if (showInput) {
       return (
-        <input type="text" data-testid="search-input" />
+        <SearchBar />
       );
     }
   }
 
   return (
-    <header className="header">
-      <button
-        type="button"
-        onClick={ () => history.push('/perfil') }
-      >
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="user"
-        />
-      </button>
-      <h1 data-testid="page-title">{ value }</h1>
-      <button
-        type="button"
-        onClick={ ifShowInput }
-      >
-        <img
-          data-testid="search-top-btn"
-          src={ searchIcon }
-          alt="search"
-        />
-      </button>
+    <div>
+      <header className="header">
+        <button
+          type="button"
+          onClick={ () => history.push('/perfil') }
+        >
+          <img
+            data-testid="profile-top-btn"
+            src={ profileIcon }
+            alt="user"
+          />
+        </button>
+        <h1 data-testid="page-title">{ value }</h1>
+        <button
+          type="button"
+          onClick={ ifShowInput }
+        >
+          <img
+            data-testid="search-top-btn"
+            src={ searchIcon }
+            alt="search"
+          />
+        </button>
+      </header>
       { searchInput() }
-    </header>
+    </div>
   );
 }
 
