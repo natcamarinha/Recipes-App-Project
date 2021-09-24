@@ -1,12 +1,12 @@
 import React from 'react';
-import BarraDeBusca from '../components/Header/BarraDeBusca';
+import SearchHeader from '../components/Header/SearchHeader';
 
 class ReceitasFavoritas extends React.Component {
   render() {
     const pageTitle = 'Receitas Favoritas';
     return (
       <div>
-        <BarraDeBusca value={ pageTitle } />
+        <SearchHeader value={ pageTitle } />
         Receitas Favoritas
       </div>
     );

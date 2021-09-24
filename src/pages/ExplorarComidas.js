@@ -1,5 +1,5 @@
 import React from 'react';
-import BarraDeBusca from '../components/Header/BarraDeBusca';
+import SearchHeader from '../components/Header/SearchHeader';
 import Footer from '../components/Footer/Footer';
 
 class ExplorarComidas extends React.Component {
@@ -7,7 +7,7 @@ class ExplorarComidas extends React.Component {
     const pageTitle = 'Explorar Comidas';
     return (
       <div>
-        <BarraDeBusca value={ pageTitle } />
+        <SearchHeader value={ pageTitle } />
         <Footer />
       </div>
     );

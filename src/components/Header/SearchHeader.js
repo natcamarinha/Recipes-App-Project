@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import profileIcon from '../../images/profileIcon.svg';
 
-function Header({ value }) {
+function SearchHeader({ value }) {
   const history = useHistory();
   return (
     <header className="header">
@@ -23,8 +23,8 @@ function Header({ value }) {
   );
 }
 
-Header.propTypes = {
+SearchHeader.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-export default Header;
+export default SearchHeader;

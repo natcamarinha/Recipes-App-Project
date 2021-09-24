@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import RecipesContext from '../context/RecipesContext';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
 export default function Comidas() {
   const [meals, setMeals] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(undefined);
+  const [/* selectedCategory */, setSelectedCategory] = useState(undefined);
 
-  const elementsNumber = 12;
+  /* const elementsNumber = 12; */
 
   const categoryNumber = 5;
 
   const pageTitle = 'Comidas';
+  const limits = 12;
+  const { recipesDb, redirect } = useContext(RecipesContext);
+  const history = useHistory();
 
   useEffect(() => {
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -33,14 +38,32 @@ export default function Comidas() {
     return <h6>Loading...</h6>;
   }
 
-  console.log(meals);
-  console.log(categories);
-  console.log(selectedCategory);
-
   return (
     <div>
       <Header value={ pageTitle } />
-<<<<<<< HEAD
+      { redirect ? history.push(`/comidas/${recipesDb.map((meal) => meal.idMeal)}`) : (
+        <div>
+          {
+            recipesDb.map((meal, index) => (// requisito 17, card com limite de 12
+              (index < limits) && (
+                <div key={ index }>
+                  <div>
+                    <span data-testid={ `${index}-card-name` }>{ meal.strMeal }</span>
+                  </div>
+                  <div data-testid={ `${index}-recipe-card` }>
+                    <img
+                      src={ meal.strMealThumb }
+                      data-testid={ `${index}-card-img` }
+                      alt={ meal.strMeal }
+                      width="150px"
+                    />
+                  </div>
+                </div>
+              )
+            ))
+          }
+        </div>
+      ) }
       <div>
         <button type="button" onClick={ () => handleClick(undefined) }>All</button>
 
@@ -56,14 +79,12 @@ export default function Comidas() {
             </button>
           )).slice(0, categoryNumber)}
       </div>
-
-      <div>
+      {/* <div>
         { selectedCategory !== undefined ? (
           meals
             .filter((meal) => meal.strCategory === selectedCategory)
             .map((mealSelected, index) => (
               <div key={ index } data-testid={ `${index}-recipe-card` }>
-                { console.log(mealSelected) }
                 <img
                   src={ mealSelected.strMealThumb }
                   alt="meal"
@@ -87,22 +108,8 @@ export default function Comidas() {
                 <p data-testid={ `${index}-card-name` }>{ meal.strMeal }</p>
               </div>
             )).slice(0, elementsNumber)}
-      </div>
-=======
-      { meals
-        .map((meal, index) => (
-          <div key={ index } data-testid={ `${index}-recipe-card` }>
-            <img
-              src={ meal.strMealThumb }
-              alt="drink"
-              width="100px"
-              data-testid={ `${index}-card-img` }
-            />
-            <p data-testid={ `${index}-card-name` }>{ meal.strMeal }</p>
-          </div>
-        )).slice(0, elementsNumber)}
+      </div> */}
       <Footer />
->>>>>>> da7e1b0e577e53f8cee65c865c7fb8d538451566
     </div>
   );
 }
