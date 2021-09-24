@@ -48,7 +48,7 @@ class Login extends React.Component {
       return validEmail;
     };
 
-    const passwordIsValid = password.length > minPasswordLength;
+    const passwordIsValid = password.length >= minPasswordLength;
 
     return (
       <form action="">

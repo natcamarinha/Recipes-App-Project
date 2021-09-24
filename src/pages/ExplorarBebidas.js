@@ -1,5 +1,6 @@
 import React from 'react';
-import SearchHeader from '../components/SearchHeader';
+import SearchHeader from '../components/Header/SearchHeader';
+import Footer from '../components/Footer/Footer';
 
 class ExplorarBebidas extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class ExplorarBebidas extends React.Component {
     return (
       <div>
         <SearchHeader value={ pageTitle } />
-        Explorar Bebidas
+        <Footer />
       </div>
     );
   }

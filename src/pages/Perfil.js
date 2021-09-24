@@ -1,5 +1,6 @@
 import React from 'react';
-import SearchHeader from '../components/SearchHeader';
+import SearchHeader from '../components/Header/SearchHeader';
+import Footer from '../components/Footer/Footer';
 
 class Perfil extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class Perfil extends React.Component {
     return (
       <div>
         <SearchHeader value={ pageTitle } />
-        Perfil
+        <Footer />
       </div>
     );
   }
