@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
-// import Progress from '../Progress.css';
+import '../Progress.css';
 
 export default class DrinksProgresso extends React.Component {
   constructor(props) {
@@ -56,16 +56,26 @@ export default class DrinksProgresso extends React.Component {
     for (let index = 0; index < ingredientArray[0].length; index += 1) {
       if (ingredientArray[0][index][1]) {
         ingredientsWithMeasures.push(
-          <checkbox
-            key={ ingredientArray[0][index][1] }
-            data-testid={ `${index}-ingredient-name-and-measure` }
+          <div
+            htmlFor="checkbox"
+            className="linha"
+            data-testid={ `${index}-ingredient-step` }
+            key={ index }
           >
+            <input
+              className="checkbox1"
+              type="checkbox"
+              id="checkbox"
+              name="checkbox"
+              key={ ingredientArray[0][index][1] }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            />
             {ingredientArray[0][index][1]}
             {' '}
             -
             {' '}
             {measureArray[0][index][1]}
-          </checkbox>,
+          </div>,
         );
       }
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
-// import Progress from '../Progress.css';
+import '../Progress.css';
 
 export default class ComidasProgresso extends React.Component {
   constructor(props) {
@@ -14,12 +14,21 @@ export default class ComidasProgresso extends React.Component {
       id,
     };
 
+    this.handleClick = this.handleClick.bind(this);
     this.fetchAPI = this.fetchAPI.bind(this);
     this.mealDetails = this.mealDetails.bind(this);
   }
 
   componentDidMount() {
     this.fetchAPI();
+  }
+
+  handleClick(e) {
+    const checkInput = e.target.checked;
+    const linha1 = checkInput.parentElement('div');
+    if (checkInput.value === true) {
+      linha1.classList.add('linha2');
+    }
   }
 
   async fetchAPI() {
@@ -56,16 +65,26 @@ export default class ComidasProgresso extends React.Component {
     for (let index = 0; index < ingredientArray[0].length; index += 1) {
       if (ingredientArray[0][index][1]) {
         ingredientsWithMeasures.push(
-          <checkbox
-            key={ ingredientArray[0][index][1] }
-            data-testid={ `${index}-ingredient-name-and-measure` }
+          <div
+            htmlFor="checkbox"
+            data-testid={ `${index}-ingredient-step` }
+            key={ index }
           >
+            <input
+              className="checkbox1"
+              onClick={ this.handleClick }
+              type="checkbox"
+              id="checkbox"
+              name="checkbox"
+              key={ ingredientArray[0][index][1] }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            />
             {ingredientArray[0][index][1]}
             {' '}
             -
             {' '}
             {measureArray[0][index][1]}
-          </checkbox>,
+          </div>,
         );
       }
     }
@@ -79,7 +98,7 @@ export default class ComidasProgresso extends React.Component {
           width="360"
         />
         <h3 data-testid="recipe-title">
-          { meal.strMeal }
+          {meal.strMeal}
         </h3>
         <button type="button" data-testid="share-btn">
           Compartilhar
@@ -88,7 +107,7 @@ export default class ComidasProgresso extends React.Component {
           Favoritar
         </button>
         <div data-testid="recipe-category">
-          { meal.strCategory }
+          {meal.strCategory}
         </div>
         <div>
           Ingredientes
@@ -97,13 +116,15 @@ export default class ComidasProgresso extends React.Component {
           </ul>
         </div>
         <div data-testid="instructions">
-          { meal.strInstructions }
+          {meal.strInstructions}
         </div>
         <div>
           <Link to="/receitas-feitas">
             <button
               data-testid="finish-recipe-btn"
+              className="botaoFinalizar"
               type="button"
+              Disabled="disabled"
             >
               Finalizar receita
             </button>
@@ -120,7 +141,7 @@ export default class ComidasProgresso extends React.Component {
     return (
       <div>
         {loading ? <Loading />
-          : this.drinkDetails()}
+          : this.mealDetails()}
       </div>
     );
   }
