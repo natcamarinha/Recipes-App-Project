@@ -1,0 +1,10 @@
+.make-recipe {
+  bottom: 0;
+  position: fixed;
+}
+
+.recomended {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
