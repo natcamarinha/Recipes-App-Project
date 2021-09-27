@@ -100,7 +100,7 @@ export default function Bebidas() {
                 <div key={ index } data-testid={ `${index}-recipe-card` }>
                   <img
                     src={ drinkFiltered.strDrinkThumb }
-                    alt="meal"
+                    alt="drink"
                     width="100px"
                     data-testid={ `${index}-card-img` }
                   />
@@ -116,7 +116,7 @@ export default function Bebidas() {
                 <div data-testid={ `${index}-recipe-card` }>
                   <img
                     src={ drink.strDrinkThumb }
-                    alt="meal"
+                    alt="drink"
                     width="150px"
                     data-testid={ `${index}-card-img` }
                   />
