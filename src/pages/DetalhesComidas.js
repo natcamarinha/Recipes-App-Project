@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Loading from '../components/Loading';
+import shareIcon from '../images/shareIcon.svg';
+import '../style.css';
 
 const NUMBER6 = 6;
+const copy = require('clipboard-copy');
 
 class DetalhesComidas extends React.Component {
   constructor(props) {
@@ -14,6 +16,8 @@ class DetalhesComidas extends React.Component {
       loading: true,
       loadingRecomended: true,
       id,
+      linkCopiado: false,
+      // isDoing: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -21,17 +25,49 @@ class DetalhesComidas extends React.Component {
     this.mealDetails = this.mealDetails.bind(this);
     this.fetchRecomendationAPI = this.fetchRecomendationAPI.bind(this);
     this.recomendedRecipes = this.recomendedRecipes.bind(this);
+    this.handleShare = this.handleShare.bind(this);
   }
 
   componentDidMount() {
     this.fetchAPI();
     this.fetchRecomendationAPI();
+    this.isDoingRecipe();
+  }
+
+  componentDidUpdate() {
+    this.linkCopiadoFunction();
   }
 
   handleClick() {
     const { id } = this.state;
     const { history } = this.props;
+    // localStorage.setItem('inProgressRecipes', JSON.stringify({
+    //   meals: {
+    //     id: ['lista de ingredientes'],
+    //   },
+    // }));
     history.push(`/comidas/${id}/in-progress`);
+  }
+
+  handleShare() {
+    const { history } = this.props;
+    const { location } = history;
+    const { pathname } = location;
+    copy(`http://localhost:3000${pathname}`);
+    this.setState({
+      linkCopiado: true,
+    });
+  }
+
+  linkCopiadoFunction() {
+    return (
+      <span>Link copiado!</span>
+    );
+  }
+
+  isDoingRecipe() {
+    const doingRecipe = localStorage.getItem('inProgressRecipes');
+    console.log(doingRecipe);
   }
 
   async fetchAPI() {
@@ -72,14 +108,14 @@ class DetalhesComidas extends React.Component {
           <p>
             {recomended.drinks[index].strAlcoholic}
           </p>
-          <h3>
+          <h3 data-testid={ `${index}-recomendation-title` }>
             {recomended.drinks[index].strDrink}
           </h3>
         </div>,
       );
     }
     return (
-      <div>
+      <div className="recomended">
         {recomendedDrinks}
       </div>
 
@@ -87,7 +123,7 @@ class DetalhesComidas extends React.Component {
   }
 
   mealDetails() {
-    const { meals, loadingRecomended } = this.state;
+    const { meals, loadingRecomended, linkCopiado } = this.state;
     const meal = meals.meals[0];
     const ingredientArray = [];
     const ingredientsWithMeasures = [];
@@ -130,9 +166,10 @@ class DetalhesComidas extends React.Component {
         <h3 data-testid="recipe-title">
           { meal.strMeal }
         </h3>
-        <button type="button" data-testid="share-btn">
-          Compartilhar
+        <button type="button" data-testid="share-btn" onClick={ this.handleShare }>
+          <img src={ shareIcon } alt="compartilhar" />
         </button>
+        {linkCopiado ? this.linkCopiadoFunction() : ''}
         <button type="button" data-testid="favorite-btn">
           Favoritar
         </button>
@@ -151,7 +188,7 @@ class DetalhesComidas extends React.Component {
         <video data-testid="video" src={ meal.strYoutube }>
           <track default kind="captions" src="" />
         </video>
-        <div data-testid="0-recomendation-card">
+        <div>
           Receitas Recomendadas
           {loadingRecomended ? <Loading />
             : this.recomendedRecipes()}
@@ -159,7 +196,7 @@ class DetalhesComidas extends React.Component {
         <button
           data-testid="start-recipe-btn"
           type="button"
-          className="start-recipe"
+          className="make-recipe"
           onClick={ this.handleClick }
         >
           Iniciar Receita
@@ -191,6 +228,8 @@ DetalhesComidas.propTypes = {
   }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
+    location: PropTypes.func,
+    pathname: PropTypes.func,
   }).isRequired,
 };
 
