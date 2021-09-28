@@ -113,7 +113,7 @@ export default function Comidas() {
           : meals
             .map((meal, index) => (
               <Link key={ index } to={ `/comidas/${meal.idMeal}` }>
-                <div data-testid={ `${index}-recipe-card` }>
+                <section data-testid={ `${index}-recipe-card` }>
                   <img
                     src={ meal.strMealThumb }
                     alt="meal"
@@ -121,7 +121,7 @@ export default function Comidas() {
                     data-testid={ `${index}-card-img` }
                   />
                   <p data-testid={ `${index}-card-name` }>{meal.strMeal}</p>
-                </div>
+                </section>
               </Link>
             )).slice(0, limits)}
       </div>
