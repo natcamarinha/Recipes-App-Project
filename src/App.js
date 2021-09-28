@@ -18,6 +18,8 @@ import ExplorarLocalDeOrigem from './pages/Explorar-C-localdeOrigem';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
+import DrinksProgresso from './pages/DrinksProgresso';
+import ComidasProgresso from './pages/ComidasProgresso';
 import store from './store';
 
 function App() {
@@ -48,6 +50,16 @@ function App() {
               exact
               path="/explorar/comidas/area"
               component={ ExplorarLocalDeOrigem }
+            />
+            <Route
+              exact
+              path="/bebidas/:id/in-progress"
+              component={ DrinksProgresso }
+            />
+            <Route
+              exact
+              path="/comidas/:id/in-progress"
+              component={ ComidasProgresso }
             />
             <Route exact path="/perfil" component={ Perfil } />
             <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
