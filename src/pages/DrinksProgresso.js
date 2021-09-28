@@ -12,14 +12,38 @@ export default class DrinksProgresso extends React.Component {
     this.state = {
       loading: true,
       id,
+      Disabled: 'disabled',
     };
 
+    this.checkAll = this.checkAll.bind(this);
     this.fetchAPI = this.fetchAPI.bind(this);
     this.drinkDetails = this.drinkDetails.bind(this);
   }
 
   componentDidMount() {
     this.fetchAPI();
+  }
+
+  checkAll() {
+    const inputs = document.querySelectorAll('input');
+    let count = 0;
+    inputs.forEach((input) => {
+      if (input.checked === true) {
+        count += 1;
+      }
+    });
+    const { drinks } = this.state;
+    const drink = drinks.drinks[0];
+    const ingredientArray = Object
+      .entries(drink)
+      .filter((ingredient) => (ingredient[0].includes('Measure')
+        && ingredient[1] !== '' && ingredient[1] !== null));
+    console.log(ingredientArray.length, count);
+    if (count === ingredientArray.length) {
+      this.setState({
+        Disabled: '',
+      });
+    }
   }
 
   async fetchAPI() {
@@ -37,7 +61,6 @@ export default class DrinksProgresso extends React.Component {
   drinkDetails() {
     const { drinks } = this.state;
     const drink = drinks.drinks[0];
-
     const ingredientArray = [];
     const ingredientsWithMeasures = [];
     const measureArray = [];
@@ -50,23 +73,21 @@ export default class DrinksProgresso extends React.Component {
       .push(Object
         .entries(drink)
         .filter((ingredient) => (ingredient[0].includes('Measure'))));
-    console.log(ingredientArray);
-    console.log(measureArray);
 
     for (let index = 0; index < ingredientArray[0].length; index += 1) {
       if (ingredientArray[0][index][1]) {
         ingredientsWithMeasures.push(
           <div
             htmlFor="checkbox"
-            className="linha"
+            className="linha1"
             data-testid={ `${index}-ingredient-step` }
             key={ index }
           >
             <input
-              className="checkbox1"
               type="checkbox"
-              id="checkbox"
               name="checkbox"
+              className="checked"
+              onClick={ this.checkAll }
               key={ ingredientArray[0][index][1] }
               data-testid={ `${index}-ingredient-name-and-measure` }
             />
@@ -109,28 +130,30 @@ export default class DrinksProgresso extends React.Component {
         <div data-testid="instructions">
           {drink.strInstructions}
         </div>
-        <div>
-          <Link to="/receitas-feitas">
-            <button
-              data-testid="finish-recipe-btn"
-              type="button"
-            >
-              Finalizar receita
-            </button>
-          </Link>
-        </div>
       </div>
 
     );
   }
 
   render() {
-    const { loading } = this.state;
+    const { loading, Disabled } = this.state;
 
     return (
       <div>
         {loading ? <Loading />
           : this.drinkDetails()}
+        <div>
+          <Link to="/receitas-feitas">
+            <button
+              data-testid="finish-recipe-btn"
+              className="botaoFinalizar"
+              type="button"
+              disabled={ Disabled }
+            >
+              Finalizar receita
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }

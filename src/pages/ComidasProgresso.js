@@ -24,15 +24,6 @@ export default class ComidasProgresso extends React.Component {
     this.fetchAPI();
   }
 
-  handleClick({ target }) {
-    if (target.checked === true) {
-      target.parentElement('label').className.add('linha2');
-    } else {
-      target.parentElement('label').className.add('');
-      target.checked = false;
-    }
-  }
-
   checkAll() {
     const inputs = document.querySelectorAll('input');
     let count = 0;
