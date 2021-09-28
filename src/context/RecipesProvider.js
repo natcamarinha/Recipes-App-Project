@@ -81,6 +81,7 @@ function RecipesProvider({ children }) {
   const context = {
     handleSearch,
     recipesDb,
+    setRecipesDb,
     redirect,
   };
 
