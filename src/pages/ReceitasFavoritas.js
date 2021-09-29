@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchHeader from '../components/Header/SearchHeader';
-import Loading from '../components/Loading';
+// import Loading from '../components/Loading';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
@@ -28,19 +28,18 @@ const copy = require('clipboard-copy');
 //   },
 // ];
 
-// localStorage.setItem('doneRecipes', JSON.stringify(favoriteRecipes));
+// localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
 
-const storage = JSON.parse(localStorage.getItem('doneRecipes'));
+const storage = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
 class ReceitasFavoritas extends React.Component {
   constructor(props) {
     super(props);
-    const { params } = props.match;
-    const { id } = params;
+    // const { params } = props.match;
+    // const { id } = params;
     this.state = {
-      loading: true,
-      emptyStorage: true,
-      id,
+      // emptyStorage: true,
+      // id,
       linkCopiado: false,
     };
 
@@ -49,7 +48,7 @@ class ReceitasFavoritas extends React.Component {
     // this.drinkDetails = this.drinkDetails.bind(this);
     // this.fetchRecomendationAPI = this.fetchRecomendationAPI.bind(this);
     // this.recomendedRecipes = this.recomendedRecipes.bind(this);
-    this.handleShare = this.handleShare.bind(this);
+    // this.handleShare = this.handleShare.bind(this);
   }
 
   // const checkStorage = () => {
@@ -60,17 +59,6 @@ class ReceitasFavoritas extends React.Component {
   //     });
   //   }
   // };
-
-  handleShare() {
-    const { history } = this.props;
-    const { location } = history;
-    const { pathname } = location;
-    copy(`http://localhost:3000${pathname}`);
-    console.log('teste');
-    this.setState({
-      linkCopiado: true,
-    });
-  }
 
   linkCopiadoFunction() {
     return (
@@ -105,35 +93,52 @@ class ReceitasFavoritas extends React.Component {
                     </span>
                   </div>
                   <div
+                    tabIndex="0"
                     data-testid={ `${index}-horizontal-name` }
                     onClick={ () => history.push(`/${meal.type}s/${meal.id}`) }
-                    onKeyDown={this.handleShare}
+                    onKeyDown={ () => history.push(`/${meal.type}s/${meal.id}`) }
                     role="link"
                   >
                     { meal.name }
                   </div>
-                  <img
-                    src={ meal.image }
-                    data-testid={ `${index}-horizontal-image` }
-                    alt={ meal.name }
-                    width="150px"
+                  <div
+                    tabIndex="0"
                     onClick={ () => history.push(`/${meal.type}s/${meal.id}`) }
-                    onKeyDown={this.handleShare}
-                    role="link"
-                  />
+                    onKeyDown={ () => history.push(`/${meal.type}s/${meal.id}`) }
+                    role="button"
+                  >
+                    <img
+                      data-testid={ `${index}-horizontal-image` }
+                      src={ meal.image }
+                      alt={ meal.name }
+                      width="150px"
+                    />
+
+                  </div>
                   <button
                     type="button"
-                    data-testid={ `${index}-share-btn` }
-                    onClick={ this.handleShare }
+                    onClick={ () => {
+                      copy(`http://localhost:3000/${meal.type}s/${meal.id}`);
+                      this.setState({
+                        linkCopiado: true,
+                      });
+                    } }
                   >
-                    <img src={ shareIcon } alt="Compartilhar" />
+                    <img
+                      data-testid={ `${index}-horizontal-share-btn` }
+                      src={ shareIcon }
+                      alt="Compartilhar"
+                    />
                   </button>
                   {linkCopiado ? this.linkCopiadoFunction() : ''}
                   <button
                     type="button"
-                    data-testid={ `${index}-favorite-btn` }
                   >
-                    <img src={ blackHeartIcon } alt="Desfavoritar" />
+                    <img
+                      src={ blackHeartIcon }
+                      data-testid={ `${index}-horizontal-favorite-btn` }
+                      alt="Desfavoritar"
+                    />
                   </button>
                 </div>
               </div>
@@ -147,7 +152,6 @@ class ReceitasFavoritas extends React.Component {
 
   render() {
     const pageTitle = 'Receitas Favoritas';
-    const { loading } = this.state;
     return (
       <div>
         <SearchHeader value={ pageTitle } />
