@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
-import renderWithRouterAndRedux from '../renderWithRouter';
+import renderWithRouterAndRedux from '../utils/renderWithRouterAndRedux';
 import Perfil from '../pages/Perfil';
 
 const FOOTER = 'footer';
