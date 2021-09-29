@@ -8,7 +8,7 @@ import Footer from '../components/Footer/Footer';
 export default function ExplorarLocalDeOrigem() {
   const [firstFood, setFirstFood] = useState([]);
   const [countries, setCountries] = useState([]);
-  const pageTitle = 'Explorar local de Origem';
+  const pageTitle = 'Explorar Origem';
   const limits = 12;
   const { recipesDb, setRecipesDb } = useContext(RecipesContext);
 
