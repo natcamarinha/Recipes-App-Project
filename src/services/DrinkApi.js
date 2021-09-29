@@ -15,3 +15,14 @@ export async function ApiDrinksLetter(letter) {
   const data = await response.json();
   return data.drinks;
 }
+
+export async function ApiDrinksCategory(category) {
+  const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
+  const data = await response.json();
+  return data.drinks;
+}
+export async function ApiDrinksId(id) {
+  const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+  const data = await response.json();
+  return data.drinks;
+}
