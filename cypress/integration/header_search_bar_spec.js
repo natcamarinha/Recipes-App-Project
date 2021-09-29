@@ -84,7 +84,7 @@ describe('14 - Posicione a barra logo abaixo do header e implemente 3 radio butt
   });
 });
 
-describe('15 - Busque na API de comidas caso a pessoa esteja na página de comidas e na de bebidas caso esteja na de bebidas', () => {
+describe.only('15 - Busque na API de comidas caso a pessoa esteja na página de comidas e na de bebidas caso esteja na de bebidas', () => {
   it('Na tela de bebidas, se o radio selecionado for Ingrediente, a busca na API é feita corretamente pelo ingrediente', () => {
     cy.visit('http://localhost:3000/bebidas', {
       onBeforeLoad(win) {
@@ -182,7 +182,7 @@ describe('16 - Redirecione para a tela de detalhes da receita caso apenas uma re
   });
 });
 
-describe.only('17 - Mostre as receitas em cards caso mais de uma receita seja encontrada', () => {
+describe('17 - Mostre as receitas em cards caso mais de uma receita seja encontrada', () => {
   it('Caso mais de uma comida seja encontrada, mostrar as 12 primeiras', () => {
     cy.visit('http://localhost:3000/comidas', {
       onBeforeLoad(win) {
