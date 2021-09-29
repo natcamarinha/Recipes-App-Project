@@ -14,7 +14,8 @@ import ExplorarComidas from './pages/ExplorarComidas';
 import ExplorarBebidas from './pages/ExplorarBebidas';
 import ExplorarBebidasPorIngredientes from './pages/ExplorarBebidasPorIngredientes';
 import ExplorarComidasPorIngredientes from './pages/ExplorarComidasPorIngredientes';
-import ExplorarLocalDeOrigem from './pages/Explorar-C-localdeOrigem';
+import ExplorarCLocalDeOrigem from './pages/Explorar-C-localdeOrigem';
+import ExplorarBLocalDeOrigem from './pages/Explorar-B-localdeOrigem';
 import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
@@ -46,8 +47,13 @@ function App() {
             />
             <Route
               exact
+              path="/explorar/bebidas/area"
+              component={ ExplorarBLocalDeOrigem }
+            />
+            <Route
+              exact
               path="/explorar/comidas/area"
-              component={ ExplorarLocalDeOrigem }
+              component={ ExplorarCLocalDeOrigem }
             />
             <Route exact path="/perfil" component={ Perfil } />
             <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
