@@ -185,9 +185,13 @@ class DetalhesComidas extends React.Component {
         <div data-testid="instructions">
           { meal.strInstructions }
         </div>
-        <video data-testid="video" src={ meal.strYoutube }>
+        <iframe
+          title={ meal.strMeal }
+          data-testid="video"
+          src={ meal.strYoutube.replace('watch?v=', 'embed/') }
+        >
           <track default kind="captions" src="" />
-        </video>
+        </iframe>
         <div>
           Receitas Recomendadas
           {loadingRecomended ? <Loading />
