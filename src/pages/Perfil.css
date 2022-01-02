@@ -1,0 +1,51 @@
+.masterP {
+  background-image: url('https://st3.depositphotos.com/1000975/i/600/depositphotos_136989600-stock-photo-funny-male-cook-isolated-on.jpg');
+  background-position: 80%;
+  background-size: cover;
+  height: 610px;
+}
+
+.Perfil {
+  margin-top: 20px;
+}
+
+.perfilIcon {
+  background-color: tomato;
+  border-radius: 20px;
+  color: white;
+  margin-left: 110px;
+  padding: 10px;
+  text-decoration: tomato;
+}
+
+.emailPerfil {
+  background-color: tomato;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 30px 0;
+  margin-top: 50px;
+  margin-left: 65px;
+  border-radius: 5px;
+  padding: 0;
+  width: 240px;
+  text-align: center;
+}
+
+.btnAll {
+  margin-top: 20px;
+}
+
+.btnPerfil {
+  background-color: tomato;
+  border: none;
+  border-radius: 5px;
+  color: #f0f7ee;
+  font-size: 15px;
+  margin-left: 90px;
+  margin-right: 12px;
+  margin-top: 30px;
+  padding: 10px;
+  position: relative;
+  width: 200px;
+}

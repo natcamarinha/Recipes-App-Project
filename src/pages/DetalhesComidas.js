@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Loading from '../components/Loading';
 import shareIcon from '../images/shareIcon.svg';
 import '../style.css';
+import './detalhes.css';
 
 const NUMBER6 = 6;
 const copy = require('clipboard-copy');
@@ -60,9 +61,7 @@ class DetalhesComidas extends React.Component {
   }
 
   linkCopiadoFunction() {
-    return (
-      <span>Link copiado!</span>
-    );
+    return <span>Link copiado!</span>;
   }
 
   isDoingRecipe() {
@@ -105,21 +104,14 @@ class DetalhesComidas extends React.Component {
             alt={ recomended.drinks[index].strDrink }
             width="180"
           />
-          <p>
-            {recomended.drinks[index].strAlcoholic}
-          </p>
+          <p>{recomended.drinks[index].strAlcoholic}</p>
           <h3 data-testid={ `${index}-recomendation-title` }>
             {recomended.drinks[index].strDrink}
           </h3>
         </div>,
       );
     }
-    return (
-      <div className="recomended">
-        {recomendedDrinks}
-      </div>
-
-    );
+    return <div className="recomended">{recomendedDrinks}</div>;
   }
 
   mealDetails() {
@@ -129,14 +121,12 @@ class DetalhesComidas extends React.Component {
     const ingredientsWithMeasures = [];
     const measureArray = [];
 
-    ingredientArray
-      .push(Object
-        .entries(meal)
-        .filter((ingredient) => (ingredient[0].includes('Ingredient'))));
-    measureArray
-      .push(Object
-        .entries(meal)
-        .filter((ingredient) => (ingredient[0].includes('Measure'))));
+    ingredientArray.push(
+      Object.entries(meal).filter((ingredient) => ingredient[0].includes('Ingredient')),
+    );
+    measureArray.push(
+      Object.entries(meal).filter((ingredient) => ingredient[0].includes('Measure')),
+    );
 
     for (let index = 0; index < ingredientArray[0].length; index += 1) {
       if (ingredientArray[0][index][1]) {
@@ -148,7 +138,6 @@ class DetalhesComidas extends React.Component {
             {ingredientArray[0][index][1]}
             {' '}
             -
-            {' '}
             {measureArray[0][index][1]}
           </li>,
         );
@@ -156,35 +145,34 @@ class DetalhesComidas extends React.Component {
     }
 
     return (
-      <div>
+      <div className="cardDC">
         <img
           data-testid="recipe-photo"
           src={ meal.strMealThumb }
           alt={ meal.strMeal }
-          width="360"
+          width="160"
         />
-        <h3 data-testid="recipe-title">
-          { meal.strMeal }
-        </h3>
-        <button type="button" data-testid="share-btn" onClick={ this.handleShare }>
-          <img src={ shareIcon } alt="compartilhar" />
-        </button>
-        {linkCopiado ? this.linkCopiadoFunction() : ''}
-        <button type="button" data-testid="favorite-btn">
-          Favoritar
-        </button>
-        <div data-testid="recipe-category">
-          { meal.strCategory }
+        <h3 data-testid="recipe-title">{meal.strMeal}</h3>
+        <div>
+          <button
+            className="btnDC"
+            type="button"
+            data-testid="share-btn"
+            onClick={ this.handleShare }
+          >
+            <img src={ shareIcon } alt="compartilhar" />
+          </button>
+          {linkCopiado ? this.linkCopiadoFunction() : ''}
+          <button className="btnDC" type="button" data-testid="favorite-btn">
+            Favoritar
+          </button>
         </div>
+        <div data-testid="recipe-category">{meal.strCategory}</div>
         <div>
           Ingredientes
-          <ul>
-            {ingredientsWithMeasures}
-          </ul>
+          <ul>{ingredientsWithMeasures}</ul>
         </div>
-        <div data-testid="instructions">
-          { meal.strInstructions }
-        </div>
+        <div data-testid="instructions">{meal.strInstructions}</div>
         <iframe
           title={ meal.strMeal }
           data-testid="video"
@@ -194,33 +182,24 @@ class DetalhesComidas extends React.Component {
         </iframe>
         <div>
           Receitas Recomendadas
-          {loadingRecomended ? <Loading />
-            : this.recomendedRecipes()}
+          {loadingRecomended ? <Loading /> : this.recomendedRecipes()}
         </div>
         <button
           data-testid="start-recipe-btn"
           type="button"
-          className="make-recipe"
+          className="btnDC"
           onClick={ this.handleClick }
         >
           Iniciar Receita
-
         </button>
-
       </div>
-
     );
   }
 
   render() {
     const { loading } = this.state;
 
-    return (
-      <div>
-        {loading ? <Loading />
-          : this.mealDetails()}
-      </div>
-    );
+    return <div>{loading ? <Loading /> : this.mealDetails()}</div>;
   }
 }
 

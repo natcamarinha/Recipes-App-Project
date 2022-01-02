@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchHeader from '../components/Header/SearchHeader';
 import shareIcon from '../images/shareIcon.svg';
+import './receitasFeitas.css';
 
 const copy = require('clipboard-copy');
 
@@ -43,25 +44,28 @@ export default function ReceitasFeitas() {
   }
 
   return (
-    <div>
+    <div className="masterRecFe">
       <SearchHeader value={ pageTitle } />
       <div>
         <button
           type="button"
           data-testid="filter-by-all-btn"
           onClick={ () => (setDoneRecipes) }
+          className="btnRF"
         >
           All
         </button>
         <button
           type="button"
           data-testid="filter-by-food-btn"
+          className="btnRF"
         >
           Food
         </button>
         <button
           type="button"
           data-testid="filter-by-drink-btn"
+          className="btnRF"
         >
           Drinks
         </button>
@@ -71,11 +75,12 @@ export default function ReceitasFeitas() {
           doneRecipes.map((recipe, index) => (
             <div key={ index } data-testid={ `${index}-recipe-card` }>
               {recipe.type === 'bebida' ? (
-                <div>
+                <div className="cardRF">
                   <img
                     data-testid={ `${index}-horizontal-image` }
                     src={ recipe.image }
                     alt={ recipe.name }
+                    width="150px"
                   />
                   <h3 data-testid={ `${index}-horizontal-name` }>{ recipe.name }</h3>
                   <p
@@ -105,11 +110,12 @@ export default function ReceitasFeitas() {
                   {linkCopiado ? linkCopiadoFunction() : ''}
                 </div>
               ) : (
-                <div>
+                <div className="cardRF">
                   <img
                     data-testid={ `${index}-horizontal-image` }
                     src={ recipe.image }
                     alt={ recipe.name }
+                    width="150px"
                   />
                   <h3 data-testid={ `${index}-horizontal-name` }>{ recipe.name }</h3>
                   <p

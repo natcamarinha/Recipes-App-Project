@@ -4,6 +4,7 @@ import SearchHeader from '../components/Header/SearchHeader';
 // import Loading from '../components/Loading';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import './receitasFeitas.css';
 
 const copy = require('clipboard-copy');
 
@@ -61,9 +62,7 @@ class ReceitasFavoritas extends React.Component {
   // };
 
   linkCopiadoFunction() {
-    return (
-      <span>Link copiado!</span>
-    );
+    return <span>Link copiado!</span>;
   }
 
   // handleClick() {
@@ -76,19 +75,35 @@ class ReceitasFavoritas extends React.Component {
     const { history } = this.props;
     return (
       <div>
-        <button type="button" data-testid="filter-by-all-btn">All</button>
-        <button type="button" data-testid="filter-by-food-btn">Food</button>
-        <button type="button" data-testid="filter-by-drink-btn">Drinks</button>
+        <button
+          className="btnRF"
+          type="button"
+          data-testid="filter-by-all-btn"
+        >
+          All
+        </button>
+        <button
+          className="btnRF"
+          type="button"
+          data-testid="filter-by-food-btn"
+        >
+          Food
+        </button>
+        <button
+          className="btnRF"
+          type="button"
+          data-testid="filter-by-drink-btn"
+        >
+          Drinks
+        </button>
         <div>
-          {
-            storage && storage.map((meal, index) => (
+          {storage
+            && storage.map((meal, index) => (
               <div key={ index }>
                 {console.log(meal, index)}
                 <div data-testid={ `${index}-recipe-card` }>
                   <div>
-                    <span
-                      data-testid={ `${index}-horizontal-top-text` }
-                    >
+                    <span data-testid={ `${index}-horizontal-top-text` }>
                       {`${meal.area} - ${meal.category} - ${meal.alcoholicOrNot}`}
                     </span>
                   </div>
@@ -99,7 +114,7 @@ class ReceitasFavoritas extends React.Component {
                     onKeyDown={ () => history.push(`/${meal.type}s/${meal.id}`) }
                     role="link"
                   >
-                    { meal.name }
+                    {meal.name}
                   </div>
                   <div
                     tabIndex="0"
@@ -113,7 +128,6 @@ class ReceitasFavoritas extends React.Component {
                       alt={ meal.name }
                       width="150px"
                     />
-
                   </div>
                   <button
                     type="button"
@@ -131,9 +145,7 @@ class ReceitasFavoritas extends React.Component {
                     />
                   </button>
                   {linkCopiado ? this.linkCopiadoFunction() : ''}
-                  <button
-                    type="button"
-                  >
+                  <button type="button">
                     <img
                       src={ blackHeartIcon }
                       data-testid={ `${index}-horizontal-favorite-btn` }
@@ -142,21 +154,18 @@ class ReceitasFavoritas extends React.Component {
                   </button>
                 </div>
               </div>
-            ))
-          }
+            ))}
         </div>
       </div>
-
     );
   }
 
   render() {
     const pageTitle = 'Receitas Favoritas';
     return (
-      <div>
+      <div className="masterRF">
         <SearchHeader value={ pageTitle } />
-        { this.cardReceitas()}
-
+        {this.cardReceitas()}
       </div>
     );
   }

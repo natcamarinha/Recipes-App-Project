@@ -1,0 +1,56 @@
+.Login {
+  align-items: center;
+  background-image: url('https://s1.1zoom.me/big0/841/Meat_products_Vegetables_457159.jpg');
+  display: flex;
+  flex-direction: column;
+  height: 670px;
+  justify-content: flex-start;
+}
+
+.Login h2 {
+  background: rgba(255, 99, 71, 0.493);
+  color: yellowgreen;
+  font-family: CuteNotes , sans-serif;
+  font-size: 60px;
+  margin-bottom: 110px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.Login button {
+  background-color: tomato;
+  border: none;
+  border-radius: 5px;
+  color: #f0f7ee;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+  padding: 10px;
+  position: relative;
+  width: 150px;
+}
+
+.Login input {
+  border: none;
+  font-size: 18px;
+  margin-left: 5px;
+  padding: 8px;
+}
+
+.Login label {
+  color: #545454;
+  font-size: 20px;
+}
+
+.Login form {
+  align-items: center;
+  background-color: yellowgreen;
+  border-radius: 10px;
+  box-shadow: px 7px 7px #5a351d;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-around;
+  padding: 50px;
+  width: 300px;
+}

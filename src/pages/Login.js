@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -48,44 +49,49 @@ class Login extends React.Component {
       return validEmail;
     };
 
-    const passwordIsValid = password.length > minPasswordLength;
+    const passwordIsValid = password.length >= minPasswordLength;
 
     return (
-      <form action="">
-        <div>
-          <label htmlFor="email">
-            <input
-              id="email"
-              data-testid="email-input"
-              name="email"
-              type="text"
-              value={ email }
-              onChange={ this.handleChange }
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            <input
-              id="password"
-              data-testid="password-input"
-              name="password"
-              type="password"
-              value={ password }
-              onChange={ this.handleChange }
-            />
-          </label>
-        </div>
-        <button
-          data-testid="login-submit-btn"
-          id="login-submit-btn"
-          onClick={ this.handleClick }
-          type="submit"
-          disabled={ !(emailIsValid() && passwordIsValid) }
-        >
-          Entrar
-        </button>
-      </form>
+      <div className="Login">
+        <h2>App de Receita</h2>
+        <form className="form" action="">
+          <div>
+            <label htmlFor="email">
+              <input
+                id="email"
+                data-testid="email-input"
+                name="email"
+                type="text"
+                value={ email }
+                onChange={ this.handleChange }
+                placeholder="E-mail"
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="password">
+              <input
+                id="password"
+                data-testid="password-input"
+                name="password"
+                type="password"
+                value={ password }
+                onChange={ this.handleChange }
+                placeholder="senha"
+              />
+            </label>
+          </div>
+          <button
+            data-testid="login-submit-btn"
+            id="login-submit-btn"
+            onClick={ this.handleClick }
+            type="submit"
+            disabled={ !(emailIsValid() && passwordIsValid) }
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     );
   }
 }

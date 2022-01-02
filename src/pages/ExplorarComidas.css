@@ -1,0 +1,45 @@
+.masterEc {
+  background-image: url('https://s1.1zoom.me/big0/841/Meat_products_Vegetables_457159.jpg');
+  height: 730px;
+}
+
+.btnExplorarMeal {
+  background-color: tomato;
+  border: none;
+  border-radius: 5px;
+  color: #f0f7ee;
+  font-size: 15px;
+  margin-left: 111px;
+  margin-right: 12px;
+  margin-top: 10px;
+  padding: 6px;
+  position: relative;
+  width: 145px;
+}
+
+.imgMeSurpreenda {
+  border: none;
+  border-radius: 8px;
+  color: #f0f7ee;
+  margin-left: 108px;
+  margin-right: 12px;
+  margin-top: 30px;
+}
+
+.imgIngredientes {
+  border: none;
+  border-radius: 8px;
+  color: #f0f7ee;
+  margin-left: 108px;
+  margin-right: 12px;
+  margin-top: 10px;
+}
+
+.imgLocalOrigem {
+  border: none;
+  border-radius: 8px;
+  color: #f0f7ee;
+  margin-left: 108px;
+  margin-right: 12px;
+  margin-top: 30px;
+}

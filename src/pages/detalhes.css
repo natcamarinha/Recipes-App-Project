@@ -1,0 +1,38 @@
+.cardDC {
+  align-items: center;
+  color: rgb(7, 7, 7);
+  display: flex;
+  background-color: tomato;
+  flex-direction: column;
+  border: none;
+  font-size: 15px;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 5px 5px 5px #c7c7c7;
+}
+
+.cardDB {
+  align-items: center;
+  color: rgb(7, 7, 7);
+  display: flex;
+  background-color: tomato;
+  flex-direction: column;
+  font-size: 15px;
+  border: none;
+  height: 1400px;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 5px 5px 5px #c7c7c7;
+}
+
+.btnDC {
+  background-color: yellowgreen;
+  border: none;
+  border-radius: 5px;
+  color: #f0f7ee;
+  font-size: 15px;
+  margin: 10px;
+  padding: 5px;
+  position: relative;
+  width: 120px;
+}

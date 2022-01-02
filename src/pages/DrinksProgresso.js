@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
-import '../Progress.css';
+// import './inprogress.css';
 
 export default class DrinksProgresso extends React.Component {
   constructor(props) {
@@ -102,20 +102,20 @@ export default class DrinksProgresso extends React.Component {
     }
 
     return (
-      <div>
+      <div className="cardIP">
         <img
           data-testid="recipe-photo"
           src={ drink.strDrinkThumb }
           alt={ drink.strDrink }
-          width="360"
+          width="160"
         />
         <h3 data-testid="recipe-title">
           {drink.strDrink}
         </h3>
-        <button type="button" data-testid="share-btn">
+        <button className="btnIP" type="button" data-testid="share-btn">
           Compartilhar
         </button>
-        <button type="button" data-testid="favorite-btn">
+        <button className="btnIP" type="button" data-testid="favorite-btn">
           Favoritar
         </button>
         <div data-testid="recipe-category">
@@ -139,14 +139,14 @@ export default class DrinksProgresso extends React.Component {
     const { loading, Disabled } = this.state;
 
     return (
-      <div>
+      <div classNanem="cardIP">
         {loading ? <Loading />
           : this.drinkDetails()}
         <div>
           <Link to="/receitas-feitas">
             <button
+              className="btnIP"
               data-testid="finish-recipe-btn"
-              className="botaoFinalizar"
               type="button"
               disabled={ Disabled }
             >

@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import './Comidas.css';
 
 export default function Comidas() {
   const [meals, setMeals] = useState([]);
@@ -46,7 +47,7 @@ export default function Comidas() {
   }
 
   return (
-    <div>
+    <div className="divMasterC">
       <Header value={ pageTitle } />
       { redirect ? history.push(`/comidas/${recipesDb.map((meal) => meal.idMeal)}`) : (
         <div>
@@ -73,6 +74,7 @@ export default function Comidas() {
       ) }
       <div>
         <button
+          className="btnComidas"
           type="button"
           data-testid="All-category-filter"
           onClick={ () => handleClick(undefined) }
@@ -83,6 +85,7 @@ export default function Comidas() {
         { categories
           .map((category, index) => (
             <button
+              className="btnComidas"
               data-testid={ `${category.strCategory}-category-filter` }
               type="button"
               key={ index }
@@ -97,11 +100,15 @@ export default function Comidas() {
           filterCategory
             .map((mealFiltered, index) => (
               <Link key={ index } to={ `/comidas/${mealFiltered.idMeal}` }>
-                <div key={ index } data-testid={ `${index}-recipe-card` }>
+                <div
+                  className="cardComidasOthers"
+                  key={ index }
+                  data-testid={ `${index}-recipe-card` }
+                >
                   <img
                     src={ mealFiltered.strMealThumb }
                     alt="meal"
-                    width="100px"
+                    width="130px"
                     data-testid={ `${index}-card-img` }
                   />
                   <p data-testid={ `${index}-card-name` }>{mealFiltered.strMeal}</p>
@@ -113,11 +120,11 @@ export default function Comidas() {
           : meals
             .map((meal, index) => (
               <Link key={ index } to={ `/comidas/${meal.idMeal}` }>
-                <section data-testid={ `${index}-recipe-card` }>
+                <section className="cardComidas" data-testid={ `${index}-recipe-card` }>
                   <img
                     src={ meal.strMealThumb }
                     alt="meal"
-                    width="100px"
+                    width="150px"
                     data-testid={ `${index}-card-img` }
                   />
                   <p data-testid={ `${index}-card-name` }>{meal.strMeal}</p>

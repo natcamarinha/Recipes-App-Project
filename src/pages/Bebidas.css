@@ -1,0 +1,63 @@
+.divMasterB {
+  background-image: url('https://s1.1zoom.me/big0/841/Meat_products_Vegetables_457159.jpg');
+  height: 3450px;
+}
+
+.btnBebidas {
+  background-color: tomato;
+  border: none;
+  border-radius: 5px;
+  color: #f0f7ee;
+  font-size: 15px;
+  margin-left: 20px;
+  margin-right: 12px;
+  margin-top: 10px;
+  padding: 5px;
+  position: relative;
+  width: 150px;
+}
+
+.cardBebidas {
+  align-items: center;
+  background-color: tomato;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px #974610;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: CuteNotes , sans-serif;
+  font-size: 35px;
+  margin: 30px;
+  margin-left: 70px;
+  max-height: 220px;
+  max-width: 230px;
+  padding: 20px;
+}
+
+.cardBebidasOthers {
+  align-items: center;
+  background-color: tomato;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px #974610;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin: 30px;
+  margin-left: 70px;
+  max-height: 220px;
+  max-width: 230px;
+  padding: 20px;
+}
+
+h6 {
+  align-items: center;
+  color: tomato;
+  font-family: CuteNotes , sans-serif;
+  font-size: 40px;
+  margin-left: 10px;
+  margin-top: 30%;
+}

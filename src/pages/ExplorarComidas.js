@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchHeader from '../components/Header/SearchHeader';
 import Footer from '../components/Footer/Footer';
+import imgMeSurpreenda from '../images/imgMeSurpreenda.jpeg';
+import imgIngredientes from '../images/imgIngredientes.jpeg';
+import imgLocalOrigem from '../images/imgLocalOrigem.jpeg';
+import './ExplorarComidas.css';
 
 export default function ExplorarComidas() {
   const pageTitle = 'Explorar Comidas';
@@ -23,7 +27,14 @@ export default function ExplorarComidas() {
     if (randomId > 0) {
       return (
         <Link to={ `/comidas/${randomId}` }>
+          <img
+            className="imgMeSurpreenda"
+            src={ imgMeSurpreenda }
+            alt="imgMeSurpreenda"
+            width="150px"
+          />
           <button
+            className="btnExplorarMeal"
             type="button"
             data-testid="explore-surprise"
             name="Me Surpreenda!"
@@ -37,10 +48,17 @@ export default function ExplorarComidas() {
   }
 
   return (
-    <div>
+    <div className="masterEc">
       <SearchHeader value={ pageTitle } />
       <Link to="/explorar/comidas/ingredientes">
+        <img
+          className="imgIngredientes"
+          src={ imgIngredientes }
+          alt="imgIngredientes"
+          width="150px"
+        />
         <button
+          className="btnExplorarMeal"
           data-testid="explore-by-ingredient"
           type="button"
         >
@@ -48,7 +66,14 @@ export default function ExplorarComidas() {
         </button>
       </Link>
       <Link to="/explorar/comidas/area">
+        <img
+          className="imgLocalOrigem"
+          src={ imgLocalOrigem }
+          alt="imgLocalOrigem"
+          width="150px"
+        />
         <button
+          className="btnExplorarMeal"
           data-testid="explore-by-area"
           type="button"
         >

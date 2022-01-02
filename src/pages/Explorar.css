@@ -1,0 +1,36 @@
+.masterEx {
+  background-image: url('https://s1.1zoom.me/big0/841/Meat_products_Vegetables_457159.jpg');
+  height: 100vh;
+}
+
+.btnExplorar {
+  background-color: tomato;
+  border: none;
+  border-radius: 5px;
+  color: #f0f7ee;
+  font-size: 15px;
+  margin-left: 85px;
+  margin-right: 12px;
+  margin-top: 20px;
+  padding: 10px;
+  position: relative;
+  width: 200px;
+}
+
+.imgExplorarMeal {
+  border: none;
+  border-radius: 8px;
+  color: #f0f7ee;
+  margin-left: 85px;
+  margin-right: 12px;
+  margin-top: 45px;
+}
+
+.imgExplorarDrink {
+  border: none;
+  border-radius: 8px;
+  color: #f0f7ee;
+  margin-left: 85px;
+  margin-right: 12px;
+  margin-top: 40px;
+}
